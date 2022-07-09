@@ -4,24 +4,27 @@ body {
     background: #F2F2F2;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
-
+    
 }
-
+h1 {
+    text-align: center;
+}
 #container {
    display: grid;
    grid-template-columns: 225px auto;
    height: 100%;
-   width: 45%;
+   
 
    img {
     width: 100%;
     }
    
    #content {
+       
        padding: 30px 20px;
         
        ul {
-           list-style-type: none;
+           list-style-type:none;
            margin:0;padding:0;
        
            li {
@@ -55,3 +58,5 @@ body {
        }
    }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

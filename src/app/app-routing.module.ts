@@ -6,14 +6,14 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { 
     path: '',
-    component: UsersComponent
+    component: LoginComponent
   },
   {
     path: 'details/:n',
     component: DetailsComponent
   },
   {
-    path: 'users',
+    path: 'usr/:unit/pwd/:code',
     component: UsersComponent
   },
   {

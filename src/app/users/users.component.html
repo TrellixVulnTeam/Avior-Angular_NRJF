@@ -1,12 +1,20 @@
-<h1>Users</h1>
+<h1 id = "usersh1">Users</h1>
 
-<ul>
-  <li *ngFor="let user of users">
-    <a routerLink="/details/{{user.n}}">{{ user.n }}</a>
+<ul id="uliste">
+  <li id="usbox">
+    <i class="material-icons">person_search</i>&nbsp; &nbsp; &nbsp; 
+    <input placeholder="Search..."id="srcField"type ="text" value="" 
+    (keyup)="onChangeEvent($event)"><select name ="Gruppe" id ="Gruppe">
+    <option value ="alle">Alle</option>
+    <option *ngFor="let group of groups; let i = index" value = "g{{i}}">{{group}}</option>
+  </select><button>Søk</button></li>
+  <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n)">
+    <a  *ngIf="test(j)" routerLink="/details/{{user.n}}">{{ user.n }}</a>
 
     <ul>
-        <li>Type: {{ user.type }} &nbsp; &nbsp; &nbsp;  Id: {{user.id}} </li>
+        <li >Type: {{ user.type }} &nbsp; &nbsp; &nbsp;  Id: {{user.id}}</li>
       
     </ul>
   </li>
+  
 </ul>

@@ -1,14 +1,40 @@
-#lform  {
-    height: 50%;
+#lform {
+    position: absolute;
+    margin: 5%;
+    min-width: 305px;
+    min-height: auto;
+    width: 20%;
+    height: 40%;
+    border-radius: 5%;
+    border-style:groove;
+    background-color: rgb(51,51,51);
+    
+    #inform {
+        background-color: rgb(87, 85, 85);
+        justify-self: center;
+        justify-content: center;
+        height: 70%;
+        width:60% ;
+        position: relative;
+        top: 12%;
+        left: 19%;
+        border-style: double;
+
+    }
 form {
     display:grid;
+    
     justify-content: center;
-    background-color: rgb(51,51,51);
-    border-radius: 15px;
-    width: 35%;
-    height: 35%;
+    padding: 20%;
     color: white;
-    
-    
 }
+}
+select {
+    height: 40px;
+}
+input {
+    height: 34px;
+}
+button {
+    height: 40px;
 }

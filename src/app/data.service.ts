@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { user } from './user.model';
+import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +10,33 @@ import { user } from './user.model';
 export class DataService {
   retur: any; 
   list: user[] = [];
+  groups: string[] = [];
+  unit: string = "";
+  code: string = "";
+  amount: number = 0;
   constructor(private http: HttpClient) {
 
    }
-   getUsers() : user[] {
-    return this.xmlRequest(this.list);
+   getUsers(unit: string, code: string, search: string) : user[] {
+    this.unit = unit; this.code = code;
+    this.list.splice(0);
+    this.amount = 0;
+    this.list = this.xmlRequest(this.list, search);
+    return this.list;
+  }
+  getNumberOfUsers(inp: string) {
+    this.getUsers(this.unit, this.code, inp);
+    return this.amount;
   }
   getUser(input: string):user {
     let bool = false;
-    this.list = this.getUsers();
+    
     for (let i = 0; i < this.list.length && !bool; i++) {
       if (this.list[i].n.includes(input)) {
         bool = true;
         this.retur = new user(this.list[i].type,this.list[i].id,this.list[i].n,this.list[i].g,
           this.list[i].s,this.list[i].e,this.list[i].w,this.list[i].t);
+          
         
       }
     }
@@ -30,22 +44,30 @@ export class DataService {
     console.log(this.retur);
     return this.retur;
   }
-  xmlRequest(users: user[]) : user[] {
+
+  groupContains(el: string) {
+    for (let i = 0; i < this.groups.length; i++) {
+      if (this.groups[i].includes(el)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  xmlRequest(users: user[], search: string) : user[] {
     var oReq = new XMLHttpRequest();
     oReq.onreadystatechange = function(e) {
       var response = oReq.response;
-
-      return fillTable(users, response);  
+      return fillTable(users, response, search);  
     }
     
    
-    oReq.open("GET", 'http://www.mobikey.eu/usr/gxl0/pwd/0000');
+    oReq.open("GET", 'http://www.mobikey.eu/usr/'+this.unit+'/pwd/'+this.code);
     oReq.responseType = "text";
     oReq.send();
     return users;
   }
 }
-function fillTable(users: user[], response: String) {
+function fillTable(users: user[], response: String, search: string) {
   response = response.substring(0, response.lastIndexOf(','));
   let tab = response.split(',');
   let u = 0;
@@ -60,13 +82,13 @@ function fillTable(users: user[], response: String) {
       tab[i+6],
       '0'
     )
-    if (tab[i] !== '') {
+    if (tab[i] !== '' && temp.n.toUpperCase().includes(search.toUpperCase())) {
     users[u] = temp;
     u++;
     }
    
   } 
-  
+
   return users;
 }
 

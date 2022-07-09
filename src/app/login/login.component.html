@@ -1,9 +1,11 @@
 <div id = "lform">
-<form>
+    <div id ="inform">
+<form *ngIf="!isAuthenticated">
     <label for ="username">Username:</label>
-    <input type="text" id="uname" name="username">
+    <input type="text" id="uname" name="username" [(ngModel)] ="unit">
     <label for="pinput">Password:</label>
-    <input type="password" id="pwd" name="pinput"><br>
-    <button>Login</button>
+    <input type="password" id="pwd" name="pinput" [(ngModel)]="code"><br>
+    <button (click)="checkAuthentication(unit, code)" >Login</button>
 </form>
+<div>
 </div>
