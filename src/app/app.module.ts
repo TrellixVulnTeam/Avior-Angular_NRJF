@@ -10,13 +10,15 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { CreateComponent } from './create/create.component';
 @NgModule({
   declarations: [
     AppComponent,
     DetailsComponent,
     LoginComponent,
     TopbarComponent,
-    UsersComponent
+    UsersComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

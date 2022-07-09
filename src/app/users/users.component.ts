@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { DataService } from '../data.service';
 import { user } from '../user.model';
 
@@ -16,11 +16,16 @@ export class UsersComponent implements OnInit {
   code: string ="";
   elements: number;
   searchFieldValue: string;
-  constructor(private data: DataService, private route: ActivatedRoute) {  
+  constructor(private data: DataService, private route: ActivatedRoute, private router: Router) {  
     this.searchFieldValue = ""; 
     this.elements = 0;
     this.route.params.subscribe(params => this.unit = params['unit']);
     this.route.params.subscribe(params => this.code = params['code']);
+    
+  }
+  createNew() {
+    console.log("test");
+    this.router.navigate(['/usr/', this.unit,'pwd',this.code, 'newuser']);
     
   }
   checkMatch(name:string) {

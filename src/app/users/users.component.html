@@ -7,7 +7,8 @@
     (keyup)="onChangeEvent($event)"><select name ="Gruppe" id ="Gruppe">
     <option value ="alle">Alle</option>
     <option *ngFor="let group of groups; let i = index" value = "g{{i}}">{{group}}</option>
-  </select><button>Søk</button></li>
+  </select><button>Search</button>
+  <button (click)="createNew()" >Create New</button></li>
   <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n)">
     <a  *ngIf="test(j)" routerLink="/details/{{user.n}}">{{ user.n }}</a>
 

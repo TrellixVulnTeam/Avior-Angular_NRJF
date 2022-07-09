@@ -2,10 +2,10 @@
     <div id ="inform">
 <form *ngIf="!isAuthenticated">
     <label for ="username">Username:</label>
-    <input type="text" id="uname" name="username" [(ngModel)] ="unit">
+    <input class="tekst"type="text" id="uname" name="username" [(ngModel)] ="unit">
     <label for="pinput">Password:</label>
-    <input type="password" id="pwd" name="pinput" [(ngModel)]="code"><br>
-    <button (click)="checkAuthentication(unit, code)" >Login</button>
+    <input class="tekst" type="password" id="pwd" name="pinput" [(ngModel)]="code"><br>
+    <button class="logKnapp"(click)="checkAuthentication(unit, code)" >Login</button>
 </form>
 <div>
 </div>
