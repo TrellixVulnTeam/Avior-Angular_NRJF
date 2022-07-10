@@ -2,13 +2,19 @@ li {
     background: rgb(51,51,51);
     width: 35%;
     border-style:groove;
+    min-width: 200px;
 }
 input {
     display: table;
     height: 20px;
+    width: 90%;
 }
 button {
     height: 40px;
     width: 30%;
     margin-left: 35%;
+}
+select {
+    height: 30px;
+    width: 93.5%;
 }

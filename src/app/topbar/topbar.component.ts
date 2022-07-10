@@ -13,5 +13,8 @@ export class TopbarComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  isLoggedIn() {
+    let url = window.location.href;
+    return url.toLowerCase().includes("/login");
+  }
 }

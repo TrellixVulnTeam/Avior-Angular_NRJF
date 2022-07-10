@@ -10,10 +10,10 @@
   </select><button>Search</button>
   <button (click)="createNew()" >Create New</button></li>
   <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n)">
-    <a  *ngIf="test(j)" routerLink="/details/{{user.n}}">{{ user.n }}</a>
+    <a  *ngIf="test(j)" routerLink="" (click)="detailsUser(user.n)">{{ user.n }}</a>
 
     <ul>
-        <li >Type: {{ user.type }} &nbsp; &nbsp; &nbsp;  Id: {{user.id}}</li>
+        <li >Type: {{ user.type }} &nbsp; &nbsp; &nbsp;  Id: {{user.id}} &nbsp; &nbsp; &nbsp; Group: {{user.g}} </li>
       
     </ul>
   </li>

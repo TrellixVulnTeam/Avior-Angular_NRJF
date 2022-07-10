@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'details/:n',
+    path: 'usr/:unit/pwd/:code/details/:n',
     component: DetailsComponent
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'usr/:unit/pwd/:code/newuser',
+    path: 'usr/:unit/pwd/:code/:amount/newuser',
     component: CreateComponent
   }
 ];

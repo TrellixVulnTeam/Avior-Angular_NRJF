@@ -14,6 +14,9 @@ export class DataService {
   unit: string = "";
   code: string = "";
   amount: number = 0;
+  getGroups() {
+    return this.groups;
+  }
   constructor(private http: HttpClient) {
 
    }
@@ -67,7 +70,7 @@ export class DataService {
     return users;
   }
 }
-function fillTable(users: user[], response: String, search: string) {
+function fillTable(users: user[], response: string, search: string):user[] {
   response = response.substring(0, response.lastIndexOf(','));
   let tab = response.split(',');
   let u = 0;

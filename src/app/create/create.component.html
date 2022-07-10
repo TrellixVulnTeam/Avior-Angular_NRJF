@@ -2,15 +2,40 @@
 <uL>
     
     <uL>
-        <li><Strong>Username: </Strong>&nbsp;<input type="text"></li>
-        <li><Strong>Type: </Strong>&nbsp;&nbsp;<input type="text"></li>
-        <li><Strong>Identifier: </Strong>&nbsp;<input type="text"></li>
-        <li><Strong>Group: </Strong>&nbsp;&nbsp;<input type="text"></li>
-        <li><Strong>Start date/time: </Strong>&nbsp;<input type="text"></li>
-        <li><Strong>Stop date/time</Strong>&nbsp;<input type="text"></li>
-        <li><Strong>Weekdays: </Strong>&nbsp;<input type="text"></li>
-        <li><Strong>Tickets:  </Strong>&nbsp;&nbsp;<input type="text"></li>
+        <form>
+            <li *ngIf="accepted" >Created: {{username}}</li>
+        <li><Strong>Username: * </Strong>&nbsp;<input maxlength="20" name="username" [(ngModel)]="username" type="text"></li>
+        <li><Strong>Type: * </Strong>&nbsp;&nbsp;
+            <select name="type"[(ngModel)]="type" >
+                <option>Telephone</option>
+                <option>Bluetooth</option> 
+                <option>Email</option>
+                <option>WebID</option>
+                <option>AppID</option> 
+        </select></li>
+        <li><Strong>Identifier: * </Strong>&nbsp;<input name="identifier" [(ngModel)]="identifier" type="text"></li>
+        <li><Strong>Group: *<select name="valg" [(ngModel)]="valg">
+            <option>New Group</option>
+            <option>Existing Group</option>
+            <option>None</option>
+        </select> </Strong>&nbsp;&nbsp;
         
+        <input *ngIf="valgt() == 1" maxlength="8" placeholder="Din Gruppe" name="groupIN"[(ngModel)]="groupIN" type="text">
+        <select *ngIf="valgt() == 2" id="selectGrp" [(ngModel)]="groupIN" name="groupIN">
+            <option disabled selected value> -- select a group -- </option>
+            <option *ngFor="let group of groups; "name="groupIN" > {{group}}</option>
+        </select>
+        
+        
+    </li>
+        <li><Strong>Start date/time: </Strong>&nbsp;<input placeholder="YY-MM-DD-23-59" name="start"[(ngModel)]="start" type="text"></li>
+        <li><Strong>Stop date/time</Strong>&nbsp;<input placeholder="YY-MM-DD-23-59" name="stop"[(ngModel)]="stop" type="text"></li>
+        <li><Strong>Weekdays: </Strong>&nbsp;<input placeholder="YYYYYYY" maxlength="7" name="weekdays"[(ngModel)]="weekdays" type="text"></li>
+        <li><Strong>Tickets:  </Strong>&nbsp;&nbsp;<input placeholder="0" name="tickets" [(ngModel)]="tickets" type="text"></li>
+        <li><button
+            (click)="createNewUser(username, type, identifier, groupIN, start, stop, weekdays, tickets)"
+            ><Strong>Lagre</Strong></button></li>
+    </form>
     </uL>
-    <li><button><Strong>Lagre</Strong></button></li>
+
 </uL>

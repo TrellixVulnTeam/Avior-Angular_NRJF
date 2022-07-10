@@ -24,9 +24,11 @@ export class UsersComponent implements OnInit {
     
   }
   createNew() {
-    console.log("test");
-    this.router.navigate(['/usr/', this.unit,'pwd',this.code, 'newuser']);
-    
+    this.router.navigate(['/usr/', this.unit,'pwd',this.code, this.elements, 'newuser']);
+  }
+  detailsUser(name: string) {
+    this.router.navigate(['/usr/', this.unit,'pwd',this.code, 'details',name]);
+
   }
   checkMatch(name:string) {
     

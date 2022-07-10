@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   }
   public logout(): void {
-
+    this.isAuthenticated = false;
+    this.router.navigate(['']);
   }
   public checkAuthentication(u: string, p:  string) {
     let url = 'http://www.mobikey.eu/usr/' + u+'/pwd/' +p;
@@ -62,11 +63,6 @@ export class LoginComponent implements OnInit {
     this.isAuthenticated = isAuthenticatedBool;
   }
   login() {
-    if (true) {
-      let x = "asd";
-      document.getElementById("logginnKnapp")?.innerText == x;
-    }
-
     this.router.navigate(['/usr/', this.unit,'pwd',this.code]);
   }
 

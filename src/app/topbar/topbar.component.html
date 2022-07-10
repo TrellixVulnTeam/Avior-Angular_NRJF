@@ -6,8 +6,11 @@
             </a>
         </li>
         <li>
-            <a routerLink="/login/" >
-                <h1 id ="logginnKnapp"><Strong>Login</Strong></h1>
+            <a *ngIf="isLoggedIn()" routerLink="/login/" >
+                <h1 X id ="logginnKnapp"><Strong >Sign in</Strong></h1>
+            </a>
+            <a *ngIf="!isLoggedIn()" routerLink="/login/" >
+                <h1 X id ="logginnKnapp"><Strong >Sign out</Strong></h1>
             </a>
         </li>
     </ul>
