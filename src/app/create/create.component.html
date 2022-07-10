@@ -4,8 +4,8 @@
     <uL>
         <form>
             <li *ngIf="accepted" >Created: {{username}}</li>
-        <li><Strong>Username: * </Strong>&nbsp;<input maxlength="20" name="username" [(ngModel)]="username" type="text"></li>
-        <li><Strong>Type: * </Strong>&nbsp;&nbsp;
+        <li><Strong>Username: </Strong><strong style="color: red;" >*</strong>&nbsp;<input maxlength="20" name="username" [(ngModel)]="username" type="text"></li>
+        <li><Strong>Type: </Strong><strong style="color: red;" >*</strong>&nbsp;&nbsp;
             <select name="type"[(ngModel)]="type" >
                 <option>Telephone</option>
                 <option>Bluetooth</option> 
@@ -13,8 +13,8 @@
                 <option>WebID</option>
                 <option>AppID</option> 
         </select></li>
-        <li><Strong>Identifier: * </Strong>&nbsp;<input name="identifier" [(ngModel)]="identifier" type="text"></li>
-        <li><Strong>Group: *<select name="valg" [(ngModel)]="valg">
+        <li><Strong>  Identifier: </Strong><strong style="color: red;" >*</strong> &nbsp;<input name="identifier" [(ngModel)]="identifier" type="text"></li>
+        <li><Strong>Group: <strong style="color: red;" >*</strong><select name="valg" [(ngModel)]="valg">
             <option>New Group</option>
             <option>Existing Group</option>
             <option>None</option>

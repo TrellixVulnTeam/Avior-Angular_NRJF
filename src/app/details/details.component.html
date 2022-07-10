@@ -1,5 +1,5 @@
 <h1> Details</h1>
-<uL *ngIf="urlcheck()">
+<uL *ngIf="!change">
     <li><Strong>Username: </Strong>&nbsp;{{user.n}}</li>
     <li><Strong>Type: </Strong>&nbsp;&nbsp;{{user.type}}</li>
     <li><Strong>Identifier: </Strong>&nbsp;{{user.id}}</li>
@@ -8,18 +8,17 @@
     <li><Strong>Stop date/time</Strong>&nbsp;{{user.e}}</li>
     <li><Strong>Weekdays: </Strong>&nbsp;{{user.w}}</li>
     <li><Strong>Tickets:  </Strong>&nbsp;&nbsp;{{user.t}}</li>
-    <li><button ><Strong>Endre</Strong></button>&nbsp;&nbsp;&nbsp;<button (click)="delete(user.type, user.id, user.n)"><Strong>Slett</Strong></button></li>
+    <li><button (click)="change = true"><Strong>Endre</Strong></button>&nbsp;&nbsp;&nbsp;<button (click)="delete(user.type, user.id, user.n)"><Strong>Slett</Strong></button></li>
 </uL>
-<!--
-    <uL>
-    <li><Strong>Username: </Strong>&nbsp;<p>{{user.n}}</p></li>
-    <li><Strong>Type: </Strong>&nbsp;&nbsp;<p>{{user.type}}</p></li>
-    <li><Strong>Identifier: </Strong>&nbsp;<p>{{user.id}}</p></li>
-    <li><Strong>Group: </Strong>&nbsp;&nbsp;<p>{{user.g}}</p></li>
-    <li><Strong>Start date/time: </Strong>&nbsp;<p>{{user.s}}</p></li>
-    <li><Strong>Stop date/time</Strong>&nbsp;<p>{{user.e}}</p></li>
-    <li><Strong>Weekdays: </Strong>&nbsp;<p>{{user.w}}</p></li>
-    <li><Strong>Tickets:  </Strong>&nbsp;&nbsp;<p>{{user.t}}</p></li>
-    <li><button><Strong>Endre</Strong></button>&nbsp;&nbsp;&nbsp;<button><Strong>Slett</Strong></button></li>
-</uL>
--->
+<uL *ngIf="change">
+    <li><Strong>Username: </Strong>&nbsp;<input  name="username" value="{{user.n}}" type="text"></li>
+    <li><Strong>Type: </Strong>&nbsp;&nbsp;<input  value="{{user.type}}" type="text"></li>
+    <li><Strong>Identifier: </Strong>&nbsp;{{user.id}}</li>
+    <li><Strong>Group: </Strong>&nbsp;&nbsp;<input  value="{{user.g}}" type="text"></li>
+    <li><Strong>Start date/time: </Strong>&nbsp;<input  value="{{user.s}}" type="text"></li>
+    <li><Strong>Stop date/time</Strong>&nbsp;<input  value="{{user.e}}" type="text"></li>
+    <li><Strong>Weekdays: </Strong>&nbsp;<input  value="{{user.w}}" type="text"></li>
+    <li><Strong>Tickets:  </Strong>&nbsp;&nbsp;<input  value="{{user.t}}" type="text"></li>
+    <li><button (click)="change = false"
+        ><Strong>Lagre</Strong></button>&nbsp;&nbsp;&nbsp;<button (click)="delete(user.type, user.id, user.n)"><Strong>Slett</Strong></button></li>
+</uL><!-- createNewUser(username, type, user.id, groupIn, start, stop, weekdays, tickets)-->
