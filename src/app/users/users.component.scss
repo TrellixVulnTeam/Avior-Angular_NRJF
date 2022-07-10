@@ -7,11 +7,26 @@ input {
 button {
     height: 40px;
 }
+
+div {
+    
+    overflow:scroll;
+    width: 50%;
+    max-height: 700px;
+    
+}
+#srcbox {
+    background: rgb(51,51,51);
+    width: 44%;
+    border-style:groove;
+    min-width: 200px;
+
+}
 #usbox {
-   
+        
         background: rgb(51,51,51);
-        width: 35%;
+        width: 90%;
         border-style:groove;
         min-width: 200px;
-    
+
 }

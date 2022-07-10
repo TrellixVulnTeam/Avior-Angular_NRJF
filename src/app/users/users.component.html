@@ -1,14 +1,19 @@
 <h1 id = "usersh1">Users</h1>
 
 <ul id="uliste">
-  <li id="usbox">
-    <i class="material-icons">person_search</i>&nbsp; &nbsp; &nbsp; 
-    <input placeholder="Search..."id="srcField"type ="text" value="" 
-    (keyup)="onChangeEvent($event)"><select name ="Gruppe" id ="Gruppe">
-    <option value ="alle">Alle</option>
-    <option *ngFor="let group of groups; let i = index" value = "g{{i}}">{{group}}</option>
-  </select><button>Search</button>
-  <button (click)="createNew()" >Create New</button></li>
+
+<li id="srcbox">
+  <i class="material-icons">person_search</i>&nbsp; &nbsp; &nbsp; 
+  <input placeholder="Search..."id="srcField"type ="text" value="" 
+  (keyup)="onChangeEvent($event)"><select name ="Gruppe" id ="Gruppe">
+  <option value ="alle">Alle</option>
+  <option *ngFor="let group of groups; let i = index" value = "g{{i}}">{{group}}</option>
+</select><button>Search</button>
+<button (click)="createNew()" >Create New</button></li>
+</ul>
+<div class="boks">
+<ul id="uliste">
+ 
   <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n)">
     <a  *ngIf="test(j)" routerLink="" (click)="detailsUser(user.n)">{{ user.n }}</a>
 
@@ -18,4 +23,4 @@
     </ul>
   </li>
   
-</ul>
+</ul></div>
