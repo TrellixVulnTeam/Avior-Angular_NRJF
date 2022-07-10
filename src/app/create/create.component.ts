@@ -148,7 +148,11 @@ export class CreateComponent implements OnInit {
       this.stop = stopstr;
       //AT#EU=T,+4795197660,Magnus,Magnus,0001010000,9912312359,YYYYYYY,0
       //at#eu=T,+4795197660,Magnus,Magnus,0001010000,99-12-30-23-59,,
-      let sendValue = "at#eu="+this.type+","+id+","+bruker+","+this.getGroup()+"," +this.start +"," +this.stop +"," +this.weekdays + "," +this.tickets;
+      let x = this.getGroup();
+      if (x === "None") {
+        this.groupIN = "";
+      }
+      let sendValue = "at#eu="+this.type+","+id+","+bruker+","+this.groupIN+"," +this.start +"," +this.stop +"," +this.weekdays + "," +this.tickets;
       console.log(sendValue)
       console.log(id);
       let sendX = "AT#EU="+this.type+","+this.identifier +"["+this.username+","+this.groupIN+","+this.start+","+this.stop+"," + this.weekdays+","+this.tickets+"]";

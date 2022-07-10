@@ -15,9 +15,11 @@ export class UsersComponent implements OnInit {
   unit: string ="";
   code: string ="";
   elements: number;
+  searchGroup: string;
   searchFieldValue: string;
   constructor(private data: DataService, private route: ActivatedRoute, private router: Router) {  
     this.searchFieldValue = ""; 
+    this.searchGroup = "Alle";
     this.elements = 0;
     this.route.params.subscribe(params => this.unit = params['unit']);
     this.route.params.subscribe(params => this.code = params['code']);
@@ -30,16 +32,25 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/usr/', this.unit,'pwd',this.code, 'details',name]);
 
   }
-  checkMatch(name:string) {
-    
-      return name.toUpperCase().includes(this.searchFieldValue.toUpperCase())
-    
+  checkMatch(name:string, grp: string, srchGrp: string) {
+      this.searchGroup = srchGrp;
+      let bool: boolean =
+       (name.toUpperCase().includes(this.searchFieldValue.toUpperCase())); 
+      if (bool) {
+        bool = ((grp === this.searchGroup) || (this.searchGroup === "") || (this.searchGroup === "Alle") );
+        if (this.searchGroup === "None" && grp === "") {
+          bool = true;
+        }
+      }
+      
+      return bool;
   }
   onChangeEvent(event: any){
     this.searchFieldValue = event.target.value;
   }
 
   ngOnInit(): void {
+    
    this.users = this.data.getUsers(this.unit, this.code, this.searchFieldValue);   
   }
   test(index: number) {

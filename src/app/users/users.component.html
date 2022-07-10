@@ -5,16 +5,16 @@
 <li id="srcbox">
   <i class="material-icons">person_search</i>&nbsp; &nbsp; &nbsp; 
   <input placeholder="Search..."id="srcField"type ="text" value="" 
-  (keyup)="onChangeEvent($event)"><select name ="Gruppe" id ="Gruppe">
-  <option value ="alle">Alle</option>
-  <option *ngFor="let group of groups; let i = index" value = "g{{i}}">{{group}}</option>
+  (keyup)="onChangeEvent($event)"><select [(ngModel)]="searchGroup" name ="Gruppe" id ="Gruppe">
+  <option selected value ="Alle">Alle</option>
+  <option *ngFor="let group of groups; let i = index" >{{group}}</option>
 </select><button>Search</button>
 <button (click)="createNew()" >Create New</button></li>
 </ul>
 <div class="boks">
 <ul id="uliste">
  
-  <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n)">
+  <li  id="usbox"  *ngFor="let user of users; let j = index" [hidden]="!checkMatch(user.n,user.g, searchGroup)">
     <a  *ngIf="test(j)" routerLink="" (click)="detailsUser(user.n)">{{ user.n }}</a>
 
     <ul>
