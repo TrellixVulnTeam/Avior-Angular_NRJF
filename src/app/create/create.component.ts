@@ -64,7 +64,7 @@ export class CreateComponent implements OnInit {
       let url = "http://www.mobikey.eu/cmd/J/"+this.unit + "/pwd/" +this.code;
       if (bool) {
         this.xmlRequestId(this.users, this.identifier, url);
-        this.router.navigate(['/usr/', this.unit,'pwd',this.code, 'details',this.username]);
+        this.router.navigate(['/usr/', this.unit,'pwd',this.code]);
       }
     }
       getGroup() {

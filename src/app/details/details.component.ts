@@ -30,6 +30,9 @@ export class DetailsComponent implements OnInit {
     if (id.charAt(0) === '+') {
     id = id.substring(1);
     }
+    let unit = this.unit;
+    let code = this.code;
+    let router = this.router;
     let url = "http://www.mobikey.eu/cmd/J/"+this.unit + "/pwd/" +this.code;;
     console.log(url);
     xhr.open("POST", url);
@@ -40,6 +43,7 @@ export class DetailsComponent implements OnInit {
         if (this.status === 200) {
 
           window.alert("Deleted user: " + username + " Id: "+id );
+          router.navigate(['/usr/', unit,'pwd', code]);
         }
       }
      
