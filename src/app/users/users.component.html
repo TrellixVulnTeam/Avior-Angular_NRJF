@@ -7,6 +7,7 @@
   <input placeholder="Search..."id="srcField"type ="text" value="" 
   (keyup)="onChangeEvent($event)"><select [(ngModel)]="searchGroup" name ="Gruppe" id ="Gruppe">
   <option selected value ="Alle">Alle</option>
+  <option value ="None">None</option>
   <option *ngFor="let group of groups; let i = index" >{{group}}</option>
 </select><button>Search</button>
 <button (click)="createNew()" >Create New</button></li>
