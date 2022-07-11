@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { user } from '../user.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
+import { delay } from 'rxjs';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -116,9 +118,6 @@ export class DetailsComponent implements OnInit {
   }
   delete(type: string, id: string, username: string) {
     var xhr = new XMLHttpRequest();
-    if (id.charAt(0) === '+') {
-    id = id.substring(1);
-    }
     let unit = this.unit;
     let code = this.code;
     let router = this.router;
@@ -137,7 +136,8 @@ export class DetailsComponent implements OnInit {
       }
      
     }
-    let msg = "AT#EU="+this.getType(type)+","+id;
+    let tab = type.charAt(type.length-1);
+    let msg = "AT#EU="+tab+","+id;
     console.log(msg);
     xhr.send(msg);
   }
